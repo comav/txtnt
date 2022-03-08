@@ -1,7 +1,7 @@
 import { AUTH_USER } from "../constants";
 
 const initialState = {
-  user: undefined
+  user: "Sussy_baka"
 };
 
 const authReducer = (state = initialState, action) => {

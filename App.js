@@ -7,10 +7,25 @@ import configureStore from './redux/store';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import authScreen from './screens/authScreen';
+import AuthScreen from './screens/authScreen';
+import MainScreen from './screens/mainScreen';
 
 const Stack = createNativeStackNavigator();
 const store = configureStore();
+
+function AuthScreenGroup({ route, navigation }, props) {
+  return (
+        <Stack.Navigator>
+          <Stack.Screen
+           name='Auth' 
+           component={AuthScreen} 
+           options={{
+             headerShown: false
+           }}
+          />
+        </Stack.Navigator>
+  )
+}
 
 export default function App() {
   return (
@@ -18,11 +33,15 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen
-           name='Auth' 
-           component={authScreen} 
-           options={{
-             headerShown: false
-           }}
+            name="Auth-group"
+            component={AuthScreenGroup}
+            options={{
+              headerShown: false
+            }}
+          />
+          <Stack.Screen
+            name='Main'
+            component={MainScreen}
           />
         </Stack.Navigator>
       </NavigationContainer>
