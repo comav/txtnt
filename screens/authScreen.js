@@ -8,13 +8,15 @@ import { connect } from "react-redux";
 import { authUser } from "../redux/actions/authAction";
 import { bindActionCreators } from "redux";
 
-function authScreen(props) {
+function AuthScreen({ route, navigation }, props) {
+  //TODO fix props and redux
 
   const [currentUsername, setCurrentUsername] = useState('');
   
   function authUser() {
-    props.actions.authUser(currentUsername);
-    console.log(props)
+    // props.actions.authUser(currentUsername);
+    // console.log(props)
+    navigation.navigate('Main');
   }
 
   return (
@@ -86,4 +88,4 @@ const mapDispatchToProps = dispatch => ({
   }, dispatch)
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(authScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(AuthScreen);
